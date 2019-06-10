@@ -10,7 +10,12 @@ describe('ombd service', function(){
     }));
     
     it('should return search movie data', function(){
-        expect(omdbApi.search('star wars')).toEqual(movieData);
+        var response;
+        omdbApi.search('star wars').then(function(data){
+            response = data;
+        })
+
+        expect(response).toEqual(movieData);
     });
 
     it('should return search movie data by id', function(){
